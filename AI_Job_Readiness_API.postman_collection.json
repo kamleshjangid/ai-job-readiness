@@ -1,0 +1,1009 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "AI Job Readiness API",
+		"description": "Complete API collection for testing AI Job Readiness Platform endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12345678"
+	},
+	"item": [
+		{
+			"name": "Health & System",
+			"item": [
+				{
+					"name": "Root Endpoint",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/",
+							"host": ["{{base_url}}"],
+							"path": [""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": ["{{base_url}}"],
+							"path": ["health"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Database Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/database",
+							"host": ["{{base_url}}"],
+							"path": ["database"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Models",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/models",
+							"host": ["{{base_url}}"],
+							"path": ["models"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/info",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "info"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Performance Metrics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/performance",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "performance"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cache Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/cache/status",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "cache", "status"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clear Cache",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/cache/clear",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "cache", "clear"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"testpassword123\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"phone\": \"+1234567890\",\n  \"bio\": \"Software Developer with 5 years experience\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/register",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "auth", "register"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "testpassword123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/jwt/login",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "auth", "jwt", "login"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/me",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "users", "me"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"refresh_token\": \"{{refresh_token}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/jwt/refresh",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "auth", "jwt", "refresh"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/jwt/logout",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "auth", "jwt", "logout"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Protected Route Test",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/protected",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "protected"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Management",
+			"item": [
+				{
+					"name": "Get User Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/profile",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "users", "profile"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"first_name\": \"John Updated\",\n  \"last_name\": \"Doe Updated\",\n  \"phone\": \"+1234567891\",\n  \"bio\": \"Updated bio with more experience\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/profile",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "users", "profile"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/list?page=1&per_page=10",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "users", "list"],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "is_active",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate User (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/{{user_id}}/activate",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "users", "{{user_id}}", "activate"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivate User (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/{{user_id}}/deactivate",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "users", "{{user_id}}", "deactivate"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role Management",
+			"item": [
+				{
+					"name": "Create Role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"test_role\",\n  \"description\": \"Test role for API testing\",\n  \"permissions\": [\"read\", \"write\", \"update\"]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "roles", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Roles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles/?skip=0&limit=100&active_only=true",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "roles", ""],
+							"query": [
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								},
+								{
+									"key": "active_only",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Role by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles/{{role_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "roles", "{{role_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Role",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"test_role_updated\",\n  \"description\": \"Updated test role description\",\n  \"permissions\": [\"read\", \"write\", \"update\", \"delete\"]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles/{{role_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "roles", "{{role_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Role",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles/{{role_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "roles", "{{role_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Role to User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": \"{{user_id}}\",\n  \"role_id\": {{role_id}}\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles/assign",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "roles", "assign"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Role from User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles/{{role_id}}/users/{{user_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "roles", "{{role_id}}", "users", "{{user_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Roles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles/users/{{user_id}}?active_only=true",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "roles", "users", "{{user_id}}"],
+							"query": [
+								{
+									"key": "active_only",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Role Statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles/stats",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "roles", "stats"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Resume Management",
+			"item": [
+				{
+					"name": "Create Resume",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Software Developer Resume\",\n  \"summary\": \"Experienced software developer with 5 years of experience\",\n  \"experience_years\": 5.0,\n  \"education_level\": \"Bachelor's Degree\",\n  \"skills\": [\"Python\", \"JavaScript\", \"React\", \"Node.js\", \"SQL\"],\n  \"languages\": [\"English\", \"Spanish\"],\n  \"is_public\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/resumes/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "resumes", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List User Resumes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/resumes/?page=1&size=10",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "resumes", ""],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "is_active",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "is_public",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Resume by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/resumes/{{resume_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "resumes", "{{resume_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Resume",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Senior Software Developer Resume\",\n  \"summary\": \"Senior software developer with 7 years of experience\",\n  \"experience_years\": 7.0,\n  \"education_level\": \"Master's Degree\",\n  \"skills\": [\"Python\", \"JavaScript\", \"React\", \"Node.js\", \"SQL\", \"Docker\", \"AWS\"],\n  \"languages\": [\"English\", \"Spanish\", \"French\"],\n  \"is_public\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/resumes/{{resume_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "resumes", "{{resume_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Resume",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/resumes/{{resume_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "resumes", "{{resume_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Resume File",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/resumes/{{resume_id}}/upload",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "resumes", "{{resume_id}}", "upload"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download Resume File",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/resumes/{{resume_id}}/download",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "resumes", "{{resume_id}}", "download"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Analyze Resume",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"analysis_type\": \"comprehensive\",\n  \"job_title\": \"Senior Software Developer\",\n  \"company\": \"Tech Corp\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/resumes/{{resume_id}}/analyze",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "resumes", "{{resume_id}}", "analyze"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Score Management",
+			"item": [
+				{
+					"name": "Get User Scores",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/scores/?page=1&size=10",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "scores", ""],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "analysis_type",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "min_score",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "max_score",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Score by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/scores/{{score_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "scores", "{{score_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Resume Scores",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/scores/resume/{{resume_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "scores", "resume", "{{resume_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Score",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resume_id\": {{resume_id}},\n  \"analysis_type\": \"comprehensive\",\n  \"job_title\": \"Senior Software Developer\",\n  \"company\": \"Tech Corp\",\n  \"overall_score\": 85.5,\n  \"skill_score\": 90.0,\n  \"experience_score\": 80.0,\n  \"education_score\": 85.0,\n  \"skill_matches\": [\"Python\", \"JavaScript\", \"React\"],\n  \"skill_gaps\": [\"Docker\", \"Kubernetes\"],\n  \"recommendations\": \"Consider learning containerization technologies\",\n  \"analysis_details\": {\n    \"strengths\": [\"Strong programming skills\", \"Good experience\"],\n    \"weaknesses\": [\"Limited DevOps knowledge\"]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/scores/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "scores", ""]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Score",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"overall_score\": 88.0,\n  \"skill_score\": 92.0,\n  \"experience_score\": 85.0,\n  \"education_score\": 87.0,\n  \"skill_matches\": [\"Python\", \"JavaScript\", \"React\", \"Node.js\"],\n  \"skill_gaps\": [\"Docker\"],\n  \"recommendations\": \"Great improvement! Consider learning Docker for containerization\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/scores/{{score_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "scores", "{{score_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Score",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/scores/{{score_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "scores", "{{score_id}}"]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "refresh_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "user_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "role_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "resume_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "score_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
